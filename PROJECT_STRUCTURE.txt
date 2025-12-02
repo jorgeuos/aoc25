@@ -1,0 +1,68 @@
+Advent of Code 2025 - Project Structure
+========================================
+
+aoc25/
+│
+├── Configuration Files
+│   ├── .gitignore              # Git ignore patterns (Python, venv, IDE files)
+│   ├── .flake8                 # Flake8 linting configuration
+│   ├── pyproject.toml          # Python project metadata and tool configs
+│   ├── requirements.txt        # Production dependencies
+│   ├── requirements-dev.txt    # Development dependencies (pytest, black, flake8)
+│   └── Makefile                # Convenient automation commands
+│
+├── Documentation
+│   ├── README.md               # Main project documentation
+│   ├── QUICKSTART.md           # Quick reference guide
+│   └── PROJECT_STRUCTURE.txt   # This file
+│
+├── Utilities
+│   ├── create_day.py           # Script to scaffold new day folders
+│   └── utils/                  # Shared utility modules
+│       ├── __init__.py         # Package exports
+│       ├── input_reader.py     # Input reading helpers
+│       └── helpers.py          # Common helper functions
+│
+├── Solutions
+│   └── day01/                  # Example day folder (template)
+│       ├── solution.py         # Solution implementation
+│       ├── input.txt           # Puzzle input
+│       └── example.txt         # Example input from puzzle
+│
+└── Tests
+    └── tests/
+        ├── __init__.py
+        └── test_helpers.py     # Tests for utility functions
+
+Key Components:
+---------------
+
+1. UTILITY FUNCTIONS (utils/)
+   - read_input()         : Read entire input as string
+   - read_input_lines()   : Read input as list of lines
+   - read_input_numbers() : Read input as list of integers
+   - read_input_grid()    : Read input as 2D grid
+   - chunks()             : Split iterable into chunks
+   - manhattan_distance() : Calculate Manhattan distance
+   - neighbors_4()        : Get 4 orthogonal neighbors
+   - neighbors_8()        : Get 8 neighbors (with diagonals)
+
+2. WORKFLOW TOOLS
+   - create_day.py        : Creates new day folder with template
+   - Makefile             : Common commands (test, lint, format, etc.)
+
+3. CODE QUALITY
+   - pytest               : Testing framework
+   - black                : Code formatter (100 char line length)
+   - flake8               : Linter
+
+Usage Pattern:
+--------------
+
+1. Create new day:     make day DAY=1
+2. Add puzzle input:   Edit day01/input.txt
+3. Implement:          Edit day01/solution.py
+4. Run:                python -m day01.solution
+5. Test:               make test
+6. Format/Lint:        make format && make lint
+
